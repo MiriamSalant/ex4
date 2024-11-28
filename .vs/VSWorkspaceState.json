@@ -1,12 +1,7 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\ex3",
-    "\\ex3\\Controller",
-    "\\ex3\\Models",
-    "\\ex3\\Repository",
-    "\\ex3\\Services"
+    ""
   ],
-  "SelectedNode": "\\ex3\\appsettings.json",
+  "SelectedNode": "\\ex3.sln",
   "PreviewInSolutionExplorer": false
 }
