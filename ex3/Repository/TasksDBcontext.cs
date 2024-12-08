@@ -13,6 +13,7 @@ namespace ex3.Repository
         public DbSet<Tasks> Tasks { get; set; }
         public DbSet<User> User { get; set; }
         public DbSet<Project> Project { get; set; }
+        public DbSet<Messages> Messages { get; set; }
 
     }
 }

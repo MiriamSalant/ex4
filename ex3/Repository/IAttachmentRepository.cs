@@ -7,7 +7,5 @@ namespace ex3.Repository
     {
            DataTable CreateAttachment(string attachmentName, string attachmentPath);
             public bool ProcessTransaction(Attachment attachment, Models.Tasks task);
-
-
     }
 }

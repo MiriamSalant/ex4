@@ -1,13 +1,12 @@
 
-
 using ex3.Repository;
 using ex3.Services;
+using ex3.Services.Logger;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using TasksApi.Services.Logger;
 
 var builder = WebApplication.CreateBuilder(args);
-
-
 
 builder.Services.AddDbContext<TasksDBcontext>(options =>
  options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
@@ -19,6 +18,17 @@ builder.Services.AddScoped<ITaskServices, TaskServices>();
 builder.Services.AddScoped<IAttachmentRepository, AttachmentRepository>();
 builder.Services.AddScoped<IAttachmentService, AttachmentService>();
 
+/*builder.Services.AddScoped<ILoggerService,ConsoleLoggerService>();
+*/
+builder.Services.AddScoped<FileLoggerService>(provider =>
+    new FileLoggerService("logs.txt")
+);
+
+builder.Services.AddScoped<DbLoggerService>();
+builder.Services.AddScoped<LoggerRepository>();
+
+
+builder.Services.AddScoped<TasksApi.Services.Logger.LoggerFactory>();
 
 // Add services to the container.
 builder.Services.AddControllers(); // This registers controller services

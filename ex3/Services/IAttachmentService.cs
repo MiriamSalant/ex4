@@ -5,8 +5,7 @@ namespace ex3.Services
 {
     public interface IAttachmentService
     {
-          DataTable CreateAttachment(string attachmentName, string attachmentPath);
-          bool CreateAt(AttachmentWithTask model);
-
+        DataTable CreateAttachment(string attachmentName, string attachmentPath);
+        bool CreateAt(AttachmentWithTask model);
     }
 }

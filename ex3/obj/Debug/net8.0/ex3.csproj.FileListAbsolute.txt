@@ -683,3 +683,4 @@ M:\api\ex4\ex3\obj\Debug\net8.0\refint\ex3.dll
 M:\api\ex4\ex3\obj\Debug\net8.0\ex3.pdb
 M:\api\ex4\ex3\obj\Debug\net8.0\ex3.genruntimeconfig.cache
 M:\api\ex4\ex3\obj\Debug\net8.0\ref\ex3.dll
+M:\api\ex4\ex3\obj\Debug\net8.0\ex3.sourcelink.json

@@ -1,17 +1,20 @@
 ﻿
 using ex3.Models;
 using Microsoft.Data.SqlClient;
-using Microsoft.Extensions.Configuration;
+using TasksApi.Services.Logger;
 
 namespace ex3.Repository
 {
     public class TaskRepository : ITaskRepository
     {
         private readonly TasksDBcontext _dbContext;
+        private TasksApi.Services.Logger.LoggerFactory _loggerFactory;
+        private ILoggerService _loggerService;
 
-        public TaskRepository(TasksDBcontext dbContext)
+        public TaskRepository(TasksDBcontext dbContext, TasksApi.Services.Logger.LoggerFactory loggerFactory)
         {
             _dbContext = dbContext;
+            _loggerFactory = loggerFactory;
         }
 
         public IEnumerable<Tasks> GetTasks()
@@ -28,6 +31,8 @@ namespace ex3.Repository
             if (_dbContext.Project.FirstOrDefault(x => x.ProjectId == task.ProjectId) == null)
                 throw new Exception("Project not found");
             _dbContext.Tasks.Add(task);
+            _loggerService = _loggerFactory.GetLogger(3);
+            _loggerService.Log("New Task created: id: " + task.Id + " creation date: " + DateTime.Now);
             return task;
         }
 
@@ -50,13 +55,10 @@ namespace ex3.Repository
 
         public IEnumerable<Tasks> getTasksUser(int userId)
         {
-
             IEnumerable<Tasks> tasks = _dbContext.Tasks.Where(y => y.UserId == userId).Select(t => t).ToList();
             if (tasks != null)
                 return tasks;
             return null;
         }
-
-        
     }
 }
